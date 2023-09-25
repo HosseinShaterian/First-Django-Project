@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>{{ req.name }}</h2>
+<small>{{ req.request_date }}</small>
+<p>{{ req.address }}</p>
+<p>{{ req.phone }}</p>
+{% if req.type_of_service == 1 %}
+    <p>نصب پکیج</p>
+{% elif req.type_of_service == 2 %}
+    <p>نصب کولر گازی</p>
+{% endif %}
+<p>{{ req.device_name }}</p>
+{% if req.is_done %}
+    <p>تمام شده</p>
+{% else %}
+    <p>ناتمام</p>
+{% endif %}
+<a href="{% url 'delete' req.id %}" class="btn btn-danger">Delete</a>
+<a href="{% url 'update' req.id %}" class="btn btn-info">Update</a>
+
+{% endblock %}

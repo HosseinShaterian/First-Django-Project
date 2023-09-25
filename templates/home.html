@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+    {% if request.user.is_authenticated %}
+        <h3>{{ request.user.first_name }}</h3>
+        <a href="{% url 'logout' %}" class="btn btn-info">Logout</a>
+        {% for req in allRequest %}
+        <div class="card">
+        <a class="card-body" href="{% url 'details' req.id %}">
+        <h2>{{ req.name }}</h2>
+        <small>{{ req.request_date }}</small>
+        </a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <a href="{% url 'user_register' %}" class="btn btn-info">Register</a>
+        <a href="{% url 'login' %}" class="btn btn-info">Login</a>
+    {% endif %}
+
+{% endblock %}
