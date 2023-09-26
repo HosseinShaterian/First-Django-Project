@@ -6,6 +6,7 @@
 
     {% if request.user.is_authenticated %}
         <h3>{{ request.user.first_name }}</h3>
+        <a href="{% url 'create' %}" class="btn btn-info">Create</a>
         <a href="{% url 'logout' %}" class="btn btn-info">Logout</a>
         {% for req in allRequest %}
         <div class="card">

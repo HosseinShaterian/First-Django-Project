@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import CustomerRequest
+from .models import CustomerRequest, SERVICE_CHOICES
 from django.contrib import messages
 from .forms import CustomerRequestCreateForm, CustomerRequestUpdateForm
 
@@ -17,8 +17,10 @@ def hello(request):
 
 def detail(request, request_id):
     req=CustomerRequest.objects.get(id=request_id)
-    # return render(request, 'detail.html', 'req':req)
-    return render(request,'detail.html',{'req':req})
+    # یافتن متن متناظر با type_of_service
+    type_of_service_text = next(choice[1] for choice in SERVICE_CHOICES if choice[0] == req.type_of_service)
+
+    return render(request,'detail.html',{'req':req, 'type_of_service_text': type_of_service_text})
 
 def delete(request, request_id):
     CustomerRequest.objects.get(id=request_id).delete()

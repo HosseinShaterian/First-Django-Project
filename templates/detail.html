@@ -6,11 +6,13 @@
 <small>{{ req.request_date }}</small>
 <p>{{ req.address }}</p>
 <p>{{ req.phone }}</p>
-{% if req.type_of_service == 1 %}
+<!-- {% if req.type_of_service == 1 %}
     <p>نصب پکیج</p>
 {% elif req.type_of_service == 2 %}
     <p>نصب کولر گازی</p>
-{% endif %}
+{% endif %} -->
+<p>{{ type_of_service_text }}</p>
+
 <p>{{ req.device_name }}</p>
 {% if req.is_done %}
     <p>تمام شده</p>

@@ -3,6 +3,13 @@ from django.db import models
 # Create your models here.
 
 
+# تعریف گزینه‌های ممکن برای type_of_service
+SERVICE_CHOICES = (
+    (1, 'خدمت نصب'),
+    (2, 'خدمت تعمیر'),
+    (3, 'خدمت دیگر'),
+)
+
 
 class CustomerRequest(models.Model):
     #customer_id = models.AutoField(primary_key=True)
